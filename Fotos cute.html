@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Fotos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffccd5;
+            text-align: center;
+            position: relative;
+        }
+        .emoji-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .emoji {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+        }
+        .container {
+            position: relative;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        .question {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ff4500;
+        }
+        .hidden {
+            display: none;
+            font-size: 22px;
+            color: #008000;
+            margin-top: 20px;
+        }
+        .yes-button, .no-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        .yes-button:hover, .no-button:hover {
+            background-color: #d85a97;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #d85a97;
+        }
+    </style>
+</head>
+<body>
+    <div class="emoji-bg">
+        <div class="emoji" style="top: 10%; left: 20%;">❤️</div>
+        <div class="emoji" style="top: 15%; left: 35%;">❤️</div>
+        <div class="emoji" style="top: 50%; left: 80%;">🍣</div>
+        <div class="emoji" style="top: 30%; left: 90%;">🍒</div>
+        <div class="emoji" style="top: 70%; left: 10%;">❤️</div>
+        <div class="emoji" style="top: 40%; left: 20%;">🍣</div>
+        <div class="emoji" style="top: 80%; left: 15%;">🍒</div>
+        <div class="emoji" style="top: 90%; left: 82%;">❤️</div>
+    </div>
+
+    <div class="container">
+        <h1>📸 Nuestra Galería 📸</h1>
+        <div class="question">¿Quieres ser mi San Valentín? 💖</div>
+        <button class="yes-button" onclick="showPrize()">Sí</button>
+        <button class="no-button" onclick="alert('Oh no, qué pena 😢')">No</button>
+
+        <div id="prize" class="hidden">🎉 ¡Te ganaste un sushi! 🍣</div>
+
+        <div class="gallery">
+            <img src="imagen1.jpeg" alt="Foto 1" onclick="openModal(this)">
+            <img src="imagen2.jpeg" alt="Foto 2" onclick="openModal(this)">
+            <img src="imagen3.jpeg" alt="Foto 3" onclick="openModal(this)">
+            <img src="imagen4.jpeg" alt="Foto 4" onclick="openModal(this)">
+            <img src="imagen5.jpeg" alt="Foto 5" onclick="openModal(this)">
+            <img src="imagen6.jpeg" alt="Foto 6" onclick="openModal(this)">
+            <img src="imagen7.jpeg" alt="Foto 7" onclick="openModal(this)">
+            <img src="imagen8.jpeg" alt="Foto 8" onclick="openModal(this)">
+            <img src="imagen9.jpeg" alt="Foto 9" onclick="openModal(this)">
+        </div>
+        <a href="index.html" class="back-button">⬅ Volver</a>
+    </div>
+
+    <audio id="background-music" src="cancion.mp3"></audio>
+
+    <script>
+        function showPrize() {
+            document.getElementById('prize').style.display = 'block';
+        }
+        function openModal(img) {
+            document.getElementById('background-music').play();
+        }
+    </script>
+</body>
+</html>
