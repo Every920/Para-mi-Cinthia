@@ -1332,15 +1332,15 @@ body {
 <body>
 <body class="not-loaded">
   <div class="night">
-     <p class="title" id="personalizedMessage">¿Quieres ser mi San Valentín?</p>
-    <button class="accept-button" onclick="startMusic(); showHeart();">Sí, acepto 💘</button>
-    <button id="playMusicButton" style="display: none;" onclick="startMusic();">Reproducir Música 🎵</button>
-    <div id="heart" class="heart">💖</div>
-    <audio id="florAudio" src="teconoci.mp3"></audio>
-    <audio id="backgroundMusic" loop>
-        <source src="teconoci.mp3" type="audio/mpeg">
-    </audio>
-</div>
+    <p class="title" id="personalizedMessage">¿Quieres ser mi San Valentín?</p>
+<button class="accept-button" onclick="startMusic(); showHeart();">Sí, acepto 💘</button>
+<button id="playButton" style="display: none;">Play</button>
+<div id="heart" class="heart" style="display: none;">💖</div>
+
+<audio id="bgMusic" loop>
+    <source src="Miel.mp3.mp3" type="audio/mpeg">
+</audio>
+
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         const name = localStorage.getItem('name');
@@ -1351,21 +1351,18 @@ body {
     });
 
     function startMusic() {
-        var backgroundMusic = document.getElementById('backgroundMusic');
+        var backgroundMusic = document.getElementById('bgMusic'); // ID corregido
         backgroundMusic.play().then(() => {
-            document.getElementById('playMusicButton').style.display = 'none'; // Ocultar botón si funciona
+            console.log("Música iniciada correctamente");
         }).catch(error => {
             console.error('Error al iniciar la música:', error);
-            document.getElementById('playMusicButton').style.display = 'block'; // Mostrar botón si falla
-            alert('El navegador bloqueó la reproducción automática. Presiona "Reproducir Música 🎵".');
+            alert('El navegador bloqueó la reproducción automática. Haz clic en cualquier parte de la página.');
         });
     }
 
     function showHeart() {
         document.getElementById('heart').style.display = 'block';
-        var audio = document.getElementById('florAudio');
-        audio.play();
-        window.open('Carta para mi bebechita.pdf', '_blank');
+        window.open('Carta para mi bebechita.pdf', '_blank'); // Abre la carta
     }
 
     function copyLink() {
